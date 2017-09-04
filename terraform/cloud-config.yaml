@@ -1,0 +1,28 @@
+#cloud-config
+write_files:
+  - path: "/aws/credentials"
+    permissions: "0644"
+    owner: "root"
+coreos:
+  update:
+    reboot-strategy: off
+  units:
+    -
+      name: albacore-web.service
+      command: start
+      runtime: true
+      content: |
+        [Unit]
+        Description=albacore-web
+        [Service]
+        TimeoutStartSec=120
+        Restart=on-failure
+        RestartSec=30
+        RestartPreventExitStatus=5
+        ExecStartPre=-/usr/bin/docker pull 707455875115.dkr.ecr.us-west-2.amazonaws.com/mechristenson/albacore-web:latest
+        ExecStartPre=-/usr/bin/docker rm -f albacore-web
+        ExecStartPre=/usr/bin/docker run \
+          -d \
+          --name albacore-web \
+          -p 8080:3000 \
+          707455875115.dkr.ecr.us-west-2.amazonaws.com/mechristenson/albacore-web:latest
