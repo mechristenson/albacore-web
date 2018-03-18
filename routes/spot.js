@@ -1,16 +1,15 @@
 var express = require('express');
-var request = require('superagent');
+var mswService = require('../services/msw.js');
 var router = express.Router();
-
-var mswController = require('../controllers/msw.js');
 
 /* GET spot listing. */
 router.get('/:id', function(req, res, next) {
-  var id = parseInt(req.params.id, 10);
-  var forecast = mswController.getSwellForecastForSpot(id);
+  var spotId = parseInt(req.params.id, 10);
 
-  res.render('spot', { spotId: id,
-                       response: forecast});
+  mswService(spotId, function (forecast) {
+    res.render('spot', { spotId: spotId,
+                         response: JSON.stringify(forecast)});
+  });
 });
 
 module.exports = router;
