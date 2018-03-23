@@ -4,23 +4,29 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var appRoot = require('app-root-path');
 
-var index = require('./routes/index');
-var spot = require('./routes/spot');
+var index = require('../routes/index');
+var spot = require('../routes/spot');
 
 var app = express();
 
+app.use(logger('dev'));
+
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(appRoot.path, 'views'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
+// parse body params and attach them to req.body
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(express.static(path.join(appRoot.path, 'public')));
 
 app.use('/', index);
 app.use('/spot', spot);

@@ -13,10 +13,11 @@
   },
   "homepage": "https://github.com/mechristenson/albacore-web#readme",
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "app-root-path": "^2.0.1",
     "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",

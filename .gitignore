@@ -64,4 +64,5 @@ config/secrets.js
 # Intellij
 *.idea
 
-# Terraform
+# Apple
+*.DS_Store
