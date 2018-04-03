@@ -1,7 +1,6 @@
-#!/usr/bin/env node
-
 // Module dependencies.
 var app = require('./config/express');
+var db = require('./config/mongoose')
 var debug = require('debug')('albacore-web:server');
 var http = require('http');
 

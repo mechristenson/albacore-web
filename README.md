@@ -17,3 +17,8 @@ http://magicseaweed.com/developer/api
 - test (when adding missing tests)
 - chore (maintain)
 - improve (improvement, e.g. enhanced feature)
+
+## Start Up
+### Development
+- Run local instance of MongoDB
+  `mongod`
