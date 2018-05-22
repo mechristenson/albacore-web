@@ -8,6 +8,7 @@ router.get('/:id', function(req, res, next) {
 
   mswService(spotId, function (forecast) {
     res.render('spot', { spotId: spotId,
+                         spotName: "El Porto",
                          response: JSON.stringify(forecast)});
   });
 });
