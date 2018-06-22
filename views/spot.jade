@@ -27,11 +27,11 @@ block content
             th(scope="col") Wind
         tbody
           tr
-            th(scope="row") 12:00 pm
-            td 3-5 ft
-            td 5 ft 8 s W
-            td 1 ft 15 s N
-            td 8 mph E
+            th(scope="row") #{timestamp}
+            td #{minSwellHeight}-#{maxSwellHeight} #{swellUnits}
+            td #{primarySwellHeight} #{swellUnits} #{primarySwellPeriod} s #{primarySwellDirection}
+            td #{secondarySwellHeight} #{swellUnits} #{secondarySwellPeriod} s #{secondarySwellDirection}
+            td #{windSpeed} #{windUnits} #{windDirection}
           tr
             th(scope="row") 3:00 pm
             td 3-4 ft
