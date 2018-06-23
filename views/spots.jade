@@ -27,11 +27,11 @@ block content
             th(scope="col") Wind
         tbody
           tr
-            th(scope="row") #{timestamp}
-            td #{minSwellHeight}-#{maxSwellHeight} #{swellUnits}
-            td #{primarySwellHeight} #{swellUnits} #{primarySwellPeriod} s #{primarySwellDirection}
-            td #{secondarySwellHeight} #{swellUnits} #{secondarySwellPeriod} s #{secondarySwellDirection}
-            td #{windSpeed} #{windUnits} #{windDirection}
+            th(scope="row") 12:00 pm
+            td 3-5 ft
+            td 5 ft 8 s W
+            td 1 ft 15 s N
+            td 8 mph E
           tr
             th(scope="row") 3:00 pm
             td 3-4 ft
@@ -42,6 +42,41 @@ block content
             th(scope="row") 6:00 pm
             td 3-4 ft
             td 4 ft 8 s W
+            td 1 ft 15 s N
+            td 10 mph SE
+
+  div(class="panel panel-primary")
+    div(class="panel-heading")
+      div(class="panel-title container-fluid")
+        div(class="row")
+          div(class="col-xs-10 col-sm-10 col-md-10 col-lg-10") Bay Street: 2613
+          div(class="col-xs-2 col-sm-2 col-md-2 col-lg-2") 12 mins
+    div(class="panel-body")
+      table(class="table table-bordered")
+        thead
+          tr
+            th(scope="col") Time
+            th(scope="col") Surf
+            th(scope="col") Primary Swell
+            th(scope="col") Secondary Swell
+            th(scope="col") Wind
+        tbody
+          tr
+            th(scope="row") 12:00 pm
+            td 2-3 ft
+            td 3 ft 8 s W
+            td 1 ft 15 s N
+            td 8 mph E
+          tr
+            th(scope="row") 3:00 pm
+            td 2-3 ft
+            td 3 ft 8 s W
+            td 1 ft 15 s N
+            td 10 mph SE
+          tr
+            th(scope="row") 6:00 pm
+            td 2 ft
+            td 2.7 ft 8 s W
             td 1 ft 15 s N
             td 10 mph SE
 
