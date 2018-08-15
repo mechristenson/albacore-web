@@ -66,3 +66,6 @@ config/secrets.js
 
 # Apple
 *.DS_Store
+
+# Dev Sequelize DB
+data/*.sqlite
