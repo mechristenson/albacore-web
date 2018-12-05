@@ -69,3 +69,6 @@ config/secrets.js
 
 # Dev Sequelize DB
 data/*.sqlite
+
+# Playground Files
+playground/
