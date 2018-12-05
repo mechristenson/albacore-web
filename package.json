@@ -28,7 +28,8 @@
     "sequelize": "^3.5.1",
     "serve-favicon": "~2.4.2",
     "sqlite3": "^4.0.2",
-    "superagent": "^3.6.3"
+    "superagent": "^3.6.3",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "node-persist": "0.0.6"
