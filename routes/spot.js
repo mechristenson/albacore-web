@@ -20,23 +20,7 @@ router.get('/:id', function(req, res, next) {
     } else {
       // Not in DB, call service and save
       mswService(spotId, function (forecast) {
-        var body = {
-          spotId: spotId,
-          spotName: "Web API",
-          timestamp: new Date(forecast[0].timestamp*1000),
-          swellUnits: forecast[0].swell.unit,
-          minSwellHeight: forecast[0].swell.minBreakingHeight,
-          maxSwellHeight: forecast[0].swell.maxBreakingHeight,
-          primarySwellHeight: forecast[0].swell.components.primary.height,
-          primarySwellPeriod: forecast[0].swell.components.primary.period,
-          primarySwellDirection: forecast[0].swell.components.primary.compassDirection,
-          secondarySwellHeight: forecast[0].swell.components.secondary.height,
-          secondarySwellPeriod: forecast[0].swell.components.secondary.period,
-          secondarySwellDirection: forecast[0].swell.components.secondary.compassDirection,
-          windUnits: forecast[0].wind.unit,
-          windSpeed: forecast[0].wind.speed,
-          windDirection: forecast[0].wind.compassDirection
-        }
+        var body = parseForecastFromAPI(forecast, spotId)
 
         db.forecast.create(body).then(function(forecast) {
           renderSpot(forecast, spotId, "Web API", res)
@@ -50,8 +34,29 @@ router.get('/:id', function(req, res, next) {
   });
 });
 
+function parseForecastFromAPI (forecast, spotId) {
+  return {
+    spotId: spotId,
+    spotName: "Web API",
+    timestamp: new Date(forecast[0].timestamp*1000),
+    swellUnits: forecast[0].swell.unit,
+    minSwellHeight: forecast[0].swell.minBreakingHeight,
+    maxSwellHeight: forecast[0].swell.maxBreakingHeight,
+    primarySwellHeight: forecast[0].swell.components.primary.height,
+    primarySwellPeriod: forecast[0].swell.components.primary.period,
+    primarySwellDirection: forecast[0].swell.components.primary.compassDirection,
+    secondarySwellHeight: forecast[0].swell.components.secondary.height,
+    secondarySwellPeriod: forecast[0].swell.components.secondary.period,
+    secondarySwellDirection: forecast[0].swell.components.secondary.compassDirection,
+    windUnits: forecast[0].wind.unit,
+    windSpeed: forecast[0].wind.speed,
+    windDirection: forecast[0].wind.compassDirection
+  };
+};
+
 function renderSpot (forecast, spotId, name, res) {
-  res.render('spot', { spotId: spotId,
+  res.render('spot', {
+    spotId: spotId,
     spotName: name,
     timestamp: forecast.timestamp,
     swellUnits: forecast.swellUnits,
