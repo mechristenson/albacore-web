@@ -25,8 +25,11 @@
     "jade": "~1.11.0",
     "morgan": "~1.8.1",
     "request": "2.81.0",
+    "sequelize": "^3.5.1",
     "serve-favicon": "~2.4.2",
-    "superagent": "^3.6.3"
+    "sqlite3": "^4.0.2",
+    "superagent": "^3.6.3",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "node-persist": "0.0.6"
